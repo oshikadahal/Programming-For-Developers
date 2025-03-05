@@ -16,6 +16,79 @@
     b. Users can adjust the topology and see the updated results.
  */
 
+ /*
+ * Problem Description:
+ * The task is to design a GUI-based network optimization application that allows network 
+ * administrators to create and visualize a network topology. The goal is to find an optimal 
+ * network configuration that minimizes both the total cost and latency of data transmission 
+ * while ensuring all nodes (servers/clients) are connected. 
+ * 
+ * The application should represent servers/clients as nodes in a graph and potential network 
+ * connections as edges, with associated costs and bandwidths. The user should be able to 
+ * interactively add nodes and edges, calculate the shortest path between nodes based on 
+ * maximum bandwidth, and optimize the network topology for cost-efficiency and low latency.
+
+ * Key Features:
+ * 1. Visual Representation of the Network:
+ *    - Nodes represent servers/clients (circles) with unique IDs.
+ *    - Edges represent connections (lines) with associated costs and bandwidths.
+ *    - Users can visualize the network and its connections interactively.
+ *
+ * 2. Interactive Optimization:
+ *    - Users can add nodes and edges to the network graph.
+ *    - The "Optimize Network" button will implement optimization algorithms (e.g., 
+ *      Kruskal's or Prim's algorithm) to minimize total cost while ensuring all nodes 
+ *      are connected.
+ *
+ * 3. Dynamic Path Calculation:
+ *    - The "Calculate Shortest Path" button calculates the shortest path between two 
+ *      nodes using Dijkstra's algorithm.
+ *    - The algorithm considers bandwidth as a weight for the edges to find the 
+ *      path with the highest bandwidth.
+ *    - The shortest path is visualized on the GUI in red.
+ *
+ * 4. Real-Time Evaluation:
+ *    - Real-time evaluation of the network's total cost and latency is displayed.
+ *    - Users can adjust the network topology interactively and see updated results.
+ *    - Latency is calculated inversely proportional to the bandwidth of the edge.
+
+ * Data Structures:
+ * 1. Node: Represents a server or client in the network with a unique identifier and 
+ *    coordinates for visualization.
+ * 2. Edge: Represents a connection between two nodes with associated cost and bandwidth.
+ * 3. NetworkGraph: A collection of nodes and edges that defines the network. Includes methods 
+ *    for adding nodes and edges, calculating the shortest path using Dijkstra's algorithm, 
+ *    and calculating total network cost and latency.
+ *
+ * Algorithms:
+ * 1. Dijkstra's Algorithm for Shortest Path Calculation:
+ *    - Find the maximum bandwidth path between two nodes by updating the bandwidth 
+ *      of neighboring nodes and selecting the node with the highest available bandwidth.
+ *
+ * 2. Network Optimization (Placeholder):
+ *    - Implement algorithms like Kruskal's or Prim's to find the Minimum Spanning Tree 
+ *      (MST) for minimizing the total cost of the network while maintaining connectivity.
+ *
+ * GUI Layout:
+ * - A JPanel representing the network, where users can add nodes and edges interactively.
+ * - Buttons for adding nodes, calculating the shortest path, and optimizing the network.
+ * - A real-time display of the network's total cost and latency.
+
+ * Approach:
+ * 1. Start with an empty network and allow the user to add nodes and edges.
+ * 2. Provide a mechanism for the user to input the start and end nodes to calculate 
+ *    the shortest path based on bandwidth.
+ * 3. Implement the "Optimize Network" button to trigger optimization algorithms for 
+ *    cost minimization.
+ * 4. Continuously update the display with the current network's cost, latency, and 
+ *    shortest paths.
+
+ * The following Java code implements the above algorithm using a graphical user interface 
+ * (GUI) where users can interactively design a network topology, calculate paths, and optimize 
+ * the network for cost and latency.
+ */
+
+
  import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
