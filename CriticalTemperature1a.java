@@ -1,6 +1,6 @@
 
 /*
- * Problem: Finding  the critical temperature 'f' with the minimum number of measurements.
+ * Problem given : Finding  the critical temperature 'f' with the minimum number of measurements.
   
   Given:
   - 'k': Number of identical samples.
@@ -8,10 +8,10 @@
   - If a sample breaks at temperature 'x', it cannot be reused.
   - If a sample does not break, it can be reused for further testing.
  
-  Goal:
+  Goal is to provide a way to:
   - Minimize the number of measurements required to determine 'f'.
  
- * Approach:
+ * Approach is to provide a way to calculate the number of measurement:
   - If k = 1, perform a linear search (worst case: 'n' measurements).
   - If k > 1, use dynamic programming:
     - Define dp[k][m] as the maximum number of temperature levels we can check.
