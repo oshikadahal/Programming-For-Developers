@@ -1,18 +1,29 @@
 /*
 Algorithm: Find the Kth Smallest Product in Two Sorted Arrays
 
-1. Initialize a Min-Heap(Priority Queue) to store product values along with their indices.
-2. Insert Initial Elements: Push the product of each element in `returns1` with the first element in `returns2` into the heap.
-   - Store triplets `{product, index in returns1, index in returns2}`.
-3. Extracting  the K Smallest Products:
-   - Pop the smallest product from the heap `k` times.
-   - Store the extracted product as the latest result.
-   - If the extracted element's index from `returns2` has a next element, push the new product into the heap.
-4. Returning  the Kth Smallest Extracted Product.
+1. Initialize a Min-Heap (Priority Queue) to store the product values and their corresponding indices from both arrays (returns1 and returns2).
+   - The heap will help us efficiently extract the smallest products while processing.
+   
+2. Insert Initial Elements into the Min-Heap:
+   - For each element in `returns1`, calculate the product of that element with the first element of `returns2`.
+   - Store these products along with the corresponding indices (returns1 index, returns2 index) in the heap.
 
-Time Complexity: O(k log k)** (Efficient compared to brute-force `O(m * n log(m * n))`)
-Space Complexity: O(min(m, n))** (Heap stores at most `min(m, n)` elements)
+3. Process the Heap to Find the Kth Smallest Product:
+   - Extract the smallest product from the heap `k` times.
+   - After each extraction, store the current smallest product as the result.
+   - If the current element's index in `returns2` (let's say `j`) is not the last index, calculate the next product with the same element in `returns1` and the next element in `returns2` (i.e., `returns2[j + 1]`) and push it into the heap.
+   
+4. After `k` extractions, the result will be the kth smallest product.
+
+Time Complexity: O(k log min(m, n))
+- k: Number of extractions (corresponding to the kth smallest product)
+- m, n: Lengths of returns1 and returns2
+- Heap operations (insert and remove) take O(log min(m, n)) time, which makes the algorithm efficient.
+
+Space Complexity: O(min(m, n))
+- The heap stores at most `min(m, n)` elements at any point in time, as each element in `returns1` can only pair with one element from `returns2` in the heap at a time.
 */
+
 
 
 import java.util.PriorityQueue;
@@ -45,16 +56,16 @@ public class KthSmallestProduct1b {
             }
         }
 
-        return result; // Return the kth smallest product
+        return result; // Returning  the kth smallest product after k extraction
     }
 
     public static void main(String[] args) {
-        // Example test case 1
-        int[] returns1 = {-4, -2, 0, 3}; // First sorted array
-        int[] returns2 = {2, 4}; // Second sorted array
-        int k = 6; // Target kth smallest product
+        // Example test case 1 for the following example:
+        int[] returns1 = {-4, -2, 0, 3}; // First sorted array of returns for the first product in the list 
+        int[] returns2 = {2, 4}; // Second sorted array of returns for the second product in the list
+        int k = 6; // Target kth smallest product 
 
-        // Call the function and print the result
+        // Calling  the function  and printing  the result
         System.out.println("The " + k + "th smallest investment return is: " + 
                             findKthSmallestProduct(returns1, returns2, k));
     }

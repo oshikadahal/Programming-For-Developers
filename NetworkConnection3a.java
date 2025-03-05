@@ -1,3 +1,57 @@
+/*
+ * Problem: You have a network of 'n' devices. Each device can either install a communication module at a given cost 
+ * or communicate with other devices through direct connections. The goal is to minimize the total cost of connecting 
+ * all devices.
+ *
+ * The approach used to solve this problem is based on Kruskal's Algorithm for Minimum Spanning Tree (MST) 
+ * and the Union-Find (Disjoint-Set) data structure.
+ *
+ * Key Steps:
+ * 1. Treat the problem as a graph where:
+ *    - Devices are nodes.
+ *    - Communication modules are treated as "virtual" edges that connect the devices to a "super node" (node 0).
+ *    - Direct connections between devices are real edges.
+ *
+ * 2. Add virtual edges for each device:
+ *    - Each device has a virtual edge connecting it to the super node (0) with the cost of the communication module.
+ *
+ * 3. Add edges for the given direct connections between devices, where each connection has a specified cost.
+ *
+ * 4. Sort all edges (both virtual and real) by their cost to ensure we process the smallest edges first, as Kruskal's 
+ *    algorithm requires edges to be processed in increasing order of cost.
+ *
+ * 5. Use Union-Find data structure to detect cycles while selecting edges. This ensures that we only include edges that 
+ *    connect disconnected components, forming a tree (MST).
+ *
+ * 6. Iterate over the sorted edges, and keep adding the smallest valid edges (those connecting two previously unconnected 
+ *    components) to the result. Continue until all devices are connected.
+ *
+ * 7. Return the total cost of the selected edges, which is the minimum cost to connect all devices.
+ *
+ * Algorithm Complexity:
+ * - Time Complexity: O(E log E) where E is the number of edges (due to sorting). The Union-Find operations (find and union) 
+ *   take nearly constant time due to path compression and union by rank.
+ * - Space Complexity: O(n) for storing the parent and rank arrays in the Union-Find structure, where n is the number of devices.
+ *
+ * Notes:
+ * - The Union-Find (Disjoint-Set) data structure is used for efficiently finding and merging connected components.
+ * - We treat module installation as "virtual edges" that connect each device to a hypothetical super node (node 0).
+ * - Kruskal's algorithm ensures that we choose the minimum-cost edges first, building the minimum spanning tree (MST).
+ *
+ * Example:
+ * Input:
+ *   n = 3
+ *   modules = [1, 2, 2]
+ *   connections = [[1, 2, 1], [2, 3, 1]]
+ *
+ * Output: The minimum cost to connect all devices is 3
+ * Explanation: Install the module on device 1 (cost = 1) and connect devices 2 and 3 to device 1 (cost = 2).
+ *
+ */
+
+
+
+
 import java.util.*;
 
 public class NetworkConnection3a {

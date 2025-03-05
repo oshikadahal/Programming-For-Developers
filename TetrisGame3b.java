@@ -1,5 +1,94 @@
 
 
+
+/*
+ * Tetris Game - Java Implementation
+ * 
+ * Game Description:
+ * This is a classic Tetris game implementation using Java Swing for the GUI. The game consists of a grid where 
+ * different Tetriminos (blocks) of varying shapes fall from the top of the screen. The player must manipulate 
+ * these blocks to fit them into the grid and form complete rows, which will be cleared. The game ends when 
+ * the blocks stack up to the top of the screen.
+ * 
+ * The game features the following:
+ * - A grid of size 10x20 (width x height).
+ * - Several block shapes (e.g., O, I, L) that can be rotated and moved left, right, or down.
+ * - A score counter that increases as rows are cleared.
+ * - The game speeds up as the player scores more points.
+ * - An option to restart the game.
+ * - A preview of the next block.
+ * 
+ * Controls:
+ * - Left button to move the current block left.
+ * - Right button to move the current block right.
+ * - Rotate button to rotate the current block.
+ * - Restart button to restart the game.
+ * 
+ * Game Flow:
+ * - The game initializes with a blank board.
+ * - A new random block appears and falls down.
+ * - The player can move the block left, right, rotate, or let it fall down faster.
+ * - When the block reaches the bottom or collides with another block, it "lands," and a new block appears.
+ * - If a row is completely filled with blocks, it gets cleared, and the score is updated.
+ * - The game continues until the blocks stack to the top of the screen.
+ * - The game speed increases after every 500 points scored to make the game more challenging.
+ * 
+ * Algorithm Description:
+ * 
+ * 1. **Initialization**:
+ * - The game board is initialized as a 2D array with a size of 20x10 (height x width).
+ * - The initial score is set to 0.
+ * - A queue of random blocks is prepared to provide the next block in line.
+ * - The next block is generated at the beginning and placed on the board.
+ * 
+ * 2. **Block Movement**:
+ * - The current block starts at the top center of the board.
+ * - The player can move the block left or right and rotate it.
+ * - The block moves down automatically over time. If it collides with another block or the bottom of the board, it lands.
+ * 
+ * 3. **Collision Detection**:
+ * - A method checks for collisions when moving or rotating the block. A collision occurs if the block:
+ *     - Moves out of bounds (off the edges of the board).
+ *     - Overlaps with any already placed blocks in the grid.
+ * 
+ * 4. **Row Clearing**:
+ * - When a row is completely filled with blocks, it gets cleared. The rows above it shift down.
+ * - The score increases by 100 points for each cleared row.
+ * 
+ * 5. **Game Over Check**:
+ * - The game ends when the top row of the board has any filled cells. This indicates that there is no room for the next block to fall.
+ * 
+ * 6. **Speed Adjustment**:
+ * - The game speed (time between block moves) increases as the player's score increases. Every 500 points, the speed reduces by 50 milliseconds, making the blocks fall faster.
+ * 
+ * 7. **Restart**:
+ * - The game can be restarted at any time by pressing the restart button. It resets the board, score, and block queue to their initial state.
+ * 
+ * 8. **Drawing**:
+ * - The game uses the `paintComponent` method to draw the game board and current block.
+ * - Each block is drawn as a filled rectangle of a specific color.
+ * - The grid is drawn with lines to represent the board's cells.
+ * - The next block is also drawn in a preview area on the side of the game board.
+ * 
+ * 9. **Controls**:
+ * - The game listens to button presses (left, right, rotate, restart) to update the current block's position and rotation.
+ * 
+ * Classes and Methods:
+ * 1. **Block Class**:
+ *    - Represents a Tetrimino block with a shape and coordinates (x, y).
+ *    - Includes methods for moving the block (left, right, down, up) and rotating it.
+ * 
+ * 2. **TetrisGame Class**:
+ *    - Manages the game state, including the board, current block, next block, score, and game speed.
+ *    - Handles game logic, user input, collision detection, row clearing, and drawing of the game elements.
+ *    - Contains methods for generating new blocks, moving blocks, rotating blocks, clearing rows, and checking game over.
+ * 
+ * 3. **GUI**:
+ *    - Uses Java Swing components for the user interface, including a game board panel, control buttons, and a score label.
+ *    - The game loop runs using a `Timer` to update the game state and repaint the screen periodically.
+ */
+
+
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.Queue;
